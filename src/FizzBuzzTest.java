@@ -36,10 +36,15 @@ public class FizzBuzzTest {
     private String fizzbuzz(int n) {
 
         String result = "";
+        FizzBuzzRule rule;
+
+        rule = new FizzRule();
         if(n % 3 == 0)
-            result += "Fizz";
+            result += rule.getLabel(n);
+
+        rule = new BuzzRule();
         if(n % 5 == 0)
-            result += "Buzz";
+            result += rule.getLabel(n);
 
         if(result == "")
             return Integer.toString(n);

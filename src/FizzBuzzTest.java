@@ -23,7 +23,10 @@ public class FizzBuzzTest {
         assertFizzBuzz(4, "4");
         assertFizzBuzz(5, "Buzz");
         assertFizzBuzz(6, "Fizz");
+        assertFizzBuzz(8, "8");
+        assertFizzBuzz(10, "Buzz");
 
+        assertFizzBuzz(15, "FizzBuzz");
     }
 
     private void assertFizzBuzz(int n, String expected) {
@@ -32,11 +35,15 @@ public class FizzBuzzTest {
 
     private String fizzbuzz(int n) {
 
+        String result = "";
         if(n % 3 == 0)
-            return "Fizz";
+            result += "Fizz";
         if(n % 5 == 0)
-            return "Buzz";
+            result += "Buzz";
 
-        return Integer.toString(n);
+        if(result == "")
+            return Integer.toString(n);
+
+        return result;
     }
 }

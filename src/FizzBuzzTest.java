@@ -26,6 +26,8 @@ public class FizzBuzzTest {
         assertFizzBuzz(8, "8");
         assertFizzBuzz(10, "Buzz");
 
+        assertFizzBuzz(12, "Fizz");
+        assertFizzBuzz(13, "13");
         assertFizzBuzz(15, "FizzBuzz");
     }
 
@@ -35,14 +37,11 @@ public class FizzBuzzTest {
 
     private String fizzbuzz(int n) {
 
-        FizzBuzzRule rule = new FizzRule(
-            new BuzzRule()
-        );
+        FizzBuzzRule rule =
+            new FizzRule(
+                new BuzzRule()
+            );
 
-        String result = rule.produceLabel(n);
-        if(result.isEmpty())
-            return Integer.toString(n);
-
-        return result;
+        return rule.produceLabel(n);
     }
 }

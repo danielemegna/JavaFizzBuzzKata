@@ -17,19 +17,20 @@ public abstract class FizzBuzzRule {
     }
 
     private String labelIfGuilty(int n) {
-        if(this.isGuilty(n))
-            return this.getRuleLabel();
+        return this.isGuilty(n) ? this.getRuleLabel() : "";
+    }
 
-        return "";
+    private String produceLabel(int n, String partialResult) {
+        String internalResult = (partialResult + this.labelIfGuilty(n));
+        
+        if(this.nextRule != null)
+            return this.nextRule.produceLabel(n, internalResult);
+
+        return (internalResult.isEmpty() ? Integer.toString(n) : internalResult);
     }
 
     public String produceLabel(int n) {
-        String result = this.labelIfGuilty(n);
-
-        if(this.nextRule != null)
-            result += this.nextRule.produceLabel(n);
-
-        return result;
+        return this.produceLabel(n, "");
     }
 
 

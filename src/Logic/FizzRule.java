@@ -5,6 +5,14 @@ package Logic;
  */
 public class FizzRule extends FizzBuzzRule {
 
+    public FizzRule() {
+        super();
+    }
+
+    public FizzRule(FizzBuzzRule nextRule) {
+        super(nextRule);
+    }
+
     @Override
     public boolean isGuilty(int n) {
         return (n % 3 == 0);

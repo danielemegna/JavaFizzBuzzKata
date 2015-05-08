@@ -35,14 +35,11 @@ public class FizzBuzzTest {
 
     private String fizzbuzz(int n) {
 
-        List<FizzBuzzRule> rules = new ArrayList<FizzBuzzRule>();
-        rules.add(new FizzRule());
-        rules.add(new BuzzRule());
+        FizzBuzzRule rule = new FizzRule(
+            new BuzzRule()
+        );
 
-        String result = "";
-        for(FizzBuzzRule rule : rules)
-            result += rule.getLabel(n);
-
+        String result = rule.produceLabel(n);
         if(result.isEmpty())
             return Integer.toString(n);
 

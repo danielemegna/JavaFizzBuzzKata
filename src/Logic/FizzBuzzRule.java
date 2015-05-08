@@ -7,8 +7,8 @@ public abstract class FizzBuzzRule {
 
     private FizzBuzzRule nextRule = null;
 
-    protected abstract boolean isGuilty(int n);
-    protected abstract String getRuleLabel();
+    protected abstract boolean isGuilty(int n, String partialResult);
+    protected abstract String getRuleLabel(int n);
 
     public FizzBuzzRule() {}
 
@@ -16,17 +16,21 @@ public abstract class FizzBuzzRule {
         this.nextRule = next;
     }
 
-    private String labelIfGuilty(int n) {
-        return this.isGuilty(n) ? this.getRuleLabel() : "";
+    private String labelIfGuilty(int n, String partialResult) {
+        return this.isGuilty(n, partialResult) ? this.getRuleLabel(n) : "";
     }
 
     private String produceLabel(int n, String partialResult) {
-        String internalResult = (partialResult + this.labelIfGuilty(n));
-        
-        if(this.nextRule != null)
-            return this.nextRule.produceLabel(n, internalResult);
+        if(this.nextRule == null)
+            return applyRuleToPartial(n, partialResult);
 
-        return (internalResult.isEmpty() ? Integer.toString(n) : internalResult);
+        return this.nextRule.produceLabel(n,
+            applyRuleToPartial(n, partialResult)
+        );
+    }
+
+    private String applyRuleToPartial(int n, String partialResult) {
+        return partialResult + this.labelIfGuilty(n, partialResult);
     }
 
     public String produceLabel(int n) {

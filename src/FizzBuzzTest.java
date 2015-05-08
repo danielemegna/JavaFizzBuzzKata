@@ -1,6 +1,7 @@
 import Logic.BuzzRule;
 import Logic.FizzBuzzRule;
 import Logic.FizzRule;
+import Logic.NumberRule;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -39,7 +40,9 @@ public class FizzBuzzTest {
 
         FizzBuzzRule rule =
             new FizzRule(
-                new BuzzRule()
+                new BuzzRule(
+                    new NumberRule()
+                )
             );
 
         return rule.produceLabel(n);

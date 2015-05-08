@@ -14,12 +14,12 @@ public class BuzzRule extends FizzBuzzRule {
     }
 
     @Override
-    public boolean isGuilty(int n) {
+    public boolean isGuilty(int n, String partialResult) {
         return (n % 5 == 0);
     }
 
     @Override
-    protected String getRuleLabel() {
+    protected String getRuleLabel(int n) {
         return "Buzz";
     }
 }

@@ -28,8 +28,29 @@ public class FizzBuzzTest {
         assertFizzBuzz(10, "Buzz");
 
         assertFizzBuzz(12, "Fizz");
-        assertFizzBuzz(13, "13");
         assertFizzBuzz(15, "FizzBuzz");
+        assertFizzBuzz(16, "16");
+    }
+
+    /** introducing new rules... **/
+
+    @Test
+    public void if_number_contains_3__is_fizz()
+    {
+        assertFizzBuzz(13, "Fizz");
+        assertFizzBuzz(31, "Fizz");
+        assertFizzBuzz(32, "Fizz");
+        assertFizzBuzz(35, "FizzBuzz");
+    }
+
+    @Test
+    public void if_number_contains_5__is_buzz()
+    {
+        assertFizzBuzz(52, "Buzz");
+        assertFizzBuzz(54, "FizzBuzz");
+        assertFizzBuzz(56, "Buzz");
+        assertFizzBuzz(57, "FizzBuzz");
+        assertFizzBuzz(851, "Buzz");
     }
 
     private void assertFizzBuzz(int n, String expected) {

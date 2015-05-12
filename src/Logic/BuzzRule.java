@@ -15,7 +15,7 @@ public class BuzzRule extends FizzBuzzRule {
 
     @Override
     public boolean isGuilty(int n, String partialResult) {
-        return (n % 5 == 0);
+        return (n % 5 == 0) || (Integer.toString(n).contains("5"));
     }
 
     @Override
